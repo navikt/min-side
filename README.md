@@ -1,2 +1,2 @@
-# layout-dittnav
-Podium-layout for dittnav
+# podlet-veientilarbeid
+Podium-podlet for VeienTilArbeid-appen
