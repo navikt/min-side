@@ -33,8 +33,10 @@ spec:
   {{ingressess}}
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   env:
-    - name: NEXT_PUBLIC_API_URL
-      value: {{base_path}}/api
+    - name: BASE_PATH
+      value: {{base_path}}
+    - name: VTA_URL
+      value: {{vta_url}}
   accessPolicy:
     inbound:
       rules:
