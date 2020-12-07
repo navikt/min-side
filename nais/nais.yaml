@@ -1,0 +1,46 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: {{app}}
+  namespace: {{namespace}}
+  labels:
+    team: {{team}}
+    app: {{app}}
+spec:
+  image: {{image}}
+  port: 7100
+  liveness:
+    path: {{base_path}}/isAlive
+    timeout: 1
+    periodSeconds: 5
+    failureThreshold: 10
+  readiness:
+    path: {{base_path}}/isReady
+    timeout: 1
+  prometheus:
+    enabled: false
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 75
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+    requests:
+      cpu: 300m
+      memory: 512Mi
+  {{ingressess}}
+  sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
+  env:
+    - name: NEXT_PUBLIC_API_URL
+      value: {{base_path}}/api
+  accessPolicy:
+    inbound:
+      rules:
+        - application: arbeid.dev.intern.nav.no
+    outbound:
+      rules:
+        - application: arbeid.dev.intern.nav.no
+      external:
+        - host: arbeid.dev.nav.no
