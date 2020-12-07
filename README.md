@@ -1,2 +1,2 @@
 # layout-dittnav
-Layout-podlet for dittnav
+Podium-layout for dittnav.
