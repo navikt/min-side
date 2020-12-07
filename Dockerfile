@@ -10,7 +10,6 @@ RUN npm ci
 
 COPY . /usr/src/app
 ENV NODE_ENV=production
-RUN npm run build
 
 FROM node:14-alpine AS runtime
 
@@ -27,8 +26,6 @@ COPY . /usr/src/app
 
 EXPOSE 7000
 USER node
-
-COPY --from=builder /usr/src/app/build /usr/src/app/build
 
 CMD ["npm", "run", "layout"]
 
