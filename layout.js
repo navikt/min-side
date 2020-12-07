@@ -31,8 +31,6 @@ app.get(`${basePath}${layout.pathname()}`, async (req, res, next) => {
     vta.fetch(incoming),
   ]);
 
-  console.log(content);
-
   incoming.podlets = content;
 
   res.podiumSend(`
