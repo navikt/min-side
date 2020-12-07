@@ -21,6 +21,9 @@ const vta = layout.client.register({
 const app = express();
 app.use(layout.middleware());
 
+// isAlive/isReady route for Nais
+app.get(`${basePath}/isAlive|isReady`, (req, res) => res.sendStatus(200));
+
 app.get(`${basePath}${layout.pathname()}`, async (req, res, next) => {
   const incoming = res.locals.podium;
 
