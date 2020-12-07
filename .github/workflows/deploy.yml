@@ -67,7 +67,7 @@ jobs:
           docker build . -t ${{ env.IMAGE }} -t ${{ env.LATEST_IMAGE }} \
             --cache-from=${{ env.IMAGE_CACHE_BUILDER }},${{ env.IMAGE_CACHE_RUNTIME }} \
             --build-arg BUILDKIT_INLINE_CACHE=1 \
-            --build-arg BASE_PATH=${{ env.BASE_PATH }}
+            --build-arg BASE_PATH=${{ env.BASE_PATH }} \
             --build-arg VTA_URL=${{ env.VTA_URL }}
           docker push ${{ env.IMAGE }}
           docker push ${{ env.LATEST_IMAGE }}
