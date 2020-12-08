@@ -1,8 +1,8 @@
 app: layout-dittnav
 namespace: personbruker
 team: personbruker
-base_path: "/person/layout-dittnav"
+base_path: "/arbeid/layout-dittnav"
 vta_url: "https://arbeid.dev.nav.no/arbeid/podlet-veientilarbeid/manifest.json"
 ingressess: |
   ingresses:
-    - https://www.dev.nav.no/person/layout-dittnav
+    - https://arbeid.dev.nav.no/arbeid/layout-dittnav
