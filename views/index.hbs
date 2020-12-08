@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  {{#each podlets.vta.css}}
+    {{this}}
+  {{/each}}
+  {{#each podlets.vta.js}}
+    {{this}}
+  {{/each}}
+  <title>{{title}}</title>
+</head>
+<body>
+<noscript>
+  You need to enable JavaScript to run this app.
+</noscript>
+
+<div id="layout-dittnav">
+  {{{podlets.vta}}}
+</div>
+
+</body>
