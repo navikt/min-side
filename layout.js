@@ -1,7 +1,8 @@
 const express = require("express");
 const Layout = require("@podium/layout");
 const fs = require("fs");
-const path = require('path');
+const path = require("path");
+const getDecorator = require("./decorator");
 
 
 const basePath = process.env.BASE_PATH || "/arbeid/layout-dittnav";
@@ -36,27 +37,29 @@ app.get(`${basePath}${layout.pathname()}`,
   async (req, res, next) => {
     const incoming = res.locals.podium;
     Promise.all(
-      [vta.fetch(incoming)]
+      [vta.fetch(incoming), getDecorator()]
     )
       .then(result => {
-        console.log(result)
+        console.log(result);
         res.locals = {
           title: "Dittnav - Layout",
           podlets: {
-            vta: result[0]
+            vta: result[0],
+            decorator: result[1]
           }
         };
         next();
       });
   },
   (req, res) => {
+
     res.locals.css = layout.client.css();
     res.locals.js = layout.client.js();
     res.status(200).render("index", res.locals);
   }
 );
 
-console.log(`VTA: ${vta}`)
+console.log(`VTA: ${vta}`);
 console.log(`Starting on port ${port} with basePath ${basePath}`);
 
 app.listen(7000);
