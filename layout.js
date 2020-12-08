@@ -1,6 +1,5 @@
 const express = require("express");
 const Layout = require("@podium/layout");
-const fs = require("fs");
 const path = require("path");
 const getDecorator = require("./decorator");
 
