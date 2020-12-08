@@ -1,11 +1,11 @@
 const jsdom = require("jsdom");
 const request = require("request");
 const NodeCache = require("node-cache");
-const logger = require("./logger");
 const { JSDOM } = jsdom;
 
 const SECONDS_PER_MINUTE = 60;
 const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
+const decorator_URL = process.env.DECORATOR_URL || 'https://dekoratoren.dev.nav.no'
 
 // Refresh cache every hour
 const cache = new NodeCache({
@@ -19,7 +19,7 @@ const getDecorator = () =>
     if (decorator) {
       resolve(decorator);
     } else {
-      const url = `${process.env.DECORATOR_URL}/?redirectToApp=true`;
+      const url = `${decorator_URL}/?redirectToApp=true`;
 
       request(url, (error, response, body) => {
         if (!error && response.statusCode >= 200 && response.statusCode < 400) {
@@ -32,7 +32,6 @@ const getDecorator = () =>
             SCRIPTS: document.getElementById("scripts")[prop],
           };
           cache.set("main-cache", data);
-          logger.info(`Creating cache`);
           resolve(data);
         } else {
           reject(new Error(error));

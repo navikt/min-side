@@ -1,9 +1,11 @@
 <!doctype html>
-<html>
+<html lang="NO">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  {{{podlets.decorator.STYLES}}}
+
   {{#each podlets.vta.css}}
     {{this}}
   {{/each}}
@@ -17,8 +19,10 @@
   You need to enable JavaScript to run this app.
 </noscript>
 
+{{{podlets.decorator.HEADER}}}
 <div id="layout-dittnav">
   {{{podlets.vta}}}
 </div>
-
+{{{podlets.decorator.FOOTER}}}
+{{{podlets.decorator.SCRIPTS}}}
 </body>

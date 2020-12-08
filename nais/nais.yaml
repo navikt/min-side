@@ -37,6 +37,8 @@ spec:
       value: {{base_path}}
     - name: VTA_URL
       value: {{vta_url}}
+    - name: DECORATOR_URL
+      value: {{decorator_url}}
   accessPolicy:
     inbound:
       rules:
@@ -46,3 +48,4 @@ spec:
         - application: arbeid.dev.intern.nav.no
       external:
         - host: arbeid.dev.nav.no
+        - host: dekoratoren.dev.nav.no
