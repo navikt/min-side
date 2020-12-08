@@ -37,6 +37,8 @@ spec:
       value: {{base_path}}
     - name: VTA_URL
       value: {{vta_url}}
+    - name: VTA_SITUASJON_URL
+      value: {{vta_situasjon_url}}
     - name: DECORATOR_URL
       value: {{decorator_url}}
   accessPolicy:

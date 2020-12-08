@@ -4,11 +4,11 @@ const fs = require("fs");
 const path = require("path");
 const getDecorator = require("./decorator");
 
-
 const basePath = process.env.BASE_PATH || "/arbeid/layout-dittnav";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
 const vtaUrl = process.env.VTA_URL || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json";
+vtaSituasjonUrl = process.env.VTA_SITUASJON_URL || "http://localhost:7100/arbeid/podlet-vta-situajon/manifest.json";
 
 const layout = new Layout({
   name: "layout-dittnav",
@@ -20,6 +20,13 @@ const layout = new Layout({
 const vta = layout.client.register({
   name: "vta",
   uri: vtaUrl,
+  resolveJs: true,
+  resolveCss: true
+});
+
+const vtaSituasjon = layout.client.register({
+  name: "vta-situasjon",
+  uri: vtaSituasjonUrl,
   resolveJs: true,
   resolveCss: true
 });
@@ -37,7 +44,11 @@ app.get(`${basePath}${layout.pathname()}`,
   async (req, res, next) => {
     const incoming = res.locals.podium;
     Promise.all(
-      [vta.fetch(incoming), getDecorator()]
+      [
+        vta.fetch(incoming),
+        vtaSituasjon.fetch(incoming),
+        getDecorator(),
+      ]
     )
       .then(result => {
         console.log(result);
@@ -45,14 +56,14 @@ app.get(`${basePath}${layout.pathname()}`,
           title: "Dittnav - Layout",
           podlets: {
             vta: result[0],
-            decorator: result[1]
+            vtaSituasjon: result[1],
+            decorator: result[2]
           }
         };
         next();
       });
   },
   (req, res) => {
-
     res.locals.css = layout.client.css();
     res.locals.js = layout.client.js();
     res.status(200).render("index", res.locals);
