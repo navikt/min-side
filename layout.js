@@ -7,7 +7,7 @@ const basePath = process.env.BASE_PATH || "/arbeid/layout-dittnav";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
 const vtaUrl = process.env.VTA_URL || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json";
-const vtaSituasjonUrl = process.env.VTA_SITUASJON_URL || "http://localhost:7100/arbeid/podlet-vta-situajon/manifest.json";
+const vtaSituasjonUrl = process.env.VTA_SITUASJON_URL || "http://localhost:7200/arbeid/podlet-vta-situajon/manifest.json";
 
 const layout = new Layout({
   name: "layout-dittnav",
