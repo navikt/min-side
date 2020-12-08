@@ -44,20 +44,20 @@ app.get(`${basePath}${layout.pathname()}`,
     const incoming = res.locals.podium;
     Promise.all(
       [
+        getDecorator(),
         vta.fetch(incoming),
         vtaSituasjon.fetch(incoming),
-        getDecorator(),
       ]
     )
       .then(result => {
         console.log(result);
         res.locals = {
           title: "Dittnav - Layout",
+          decorator: result[0],
           podlets: {
-            vta: result[0],
-            vtaSituasjon: result[1],
-            decorator: result[2]
-          }
+            vta: result[1],
+            vtaSituasjon: result[2],
+          },
         };
         next();
       });
