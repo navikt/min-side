@@ -5,6 +5,7 @@ const fs = require("fs");
 const basePath = process.env.BASE_PATH || "/arbeid/layout-dittnav";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
+const vtaUrl = process.env.VTA_URL || 'http://localhost:7100/arbeid/podlet-veientilarbeid'
 
 const layout = new Layout({
   name: 'layout-dittnav',
@@ -15,7 +16,7 @@ const layout = new Layout({
 
 const vta = layout.client.register({
   name: 'vta',
-  uri: process.env.VTA_URL,
+  uri: vtaUrl,
 });
 
 const app = express();
