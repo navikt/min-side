@@ -2,12 +2,12 @@ const express = require("express");
 const Layout = require("@podium/layout");
 const fs = require("fs");
 
-const basePath = process.env.BASE_PATH || "/person/dittnav";
+const basePath = process.env.BASE_PATH || "/person/layout-dittnav";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
 
 const layout = new Layout({
-  name: 'dittnav',
+  name: 'layout-dittnav',
   pathname: '/',
   development: true,
   logger: console,
