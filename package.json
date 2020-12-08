@@ -14,9 +14,9 @@
     "prettier": "2.2.1"
   },
   "scripts": {
-    "test": "node --version",
+    "layout": "node layout.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
-    "layout": "node layout.js"
+    "test": "node --version"
   },
   "browserslist": {
     "production": [
