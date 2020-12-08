@@ -12,7 +12,7 @@ const vtaSituasjonUrl = process.env.VTA_SITUASJON_URL || "http://localhost:7100/
 const layout = new Layout({
   name: "layout-dittnav",
   pathname: "/",
-  development: true,
+  development: isDevelopmentEnv,
   logger: console
 });
 
