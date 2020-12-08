@@ -34,9 +34,9 @@ app.get(`${basePath}/isAlive|isReady`, (req, res) => res.sendStatus(200));
 
 app.get(`${basePath}${layout.pathname()}`,
   async (req, res, next) => {
-    const ctx = res.locals.podium.context;
+    const incoming = res.locals.podium;
     Promise.all(
-      [vta.fetch(ctx)]
+      [vta.fetch(incoming)]
     )
       .then(result => {
         console.log(result)
