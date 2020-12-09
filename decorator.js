@@ -5,7 +5,7 @@ const { JSDOM } = jsdom;
 
 const SECONDS_PER_MINUTE = 60;
 const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
-const decorator_URL = process.env.DECORATOR_URL || 'https://dekoratoren.dev.nav.no'
+const decorator_URL = process.env.DECORATOR_URL || 'https://dekoratoren.dev.nav.no';
 
 // Refresh cache every hour
 const cache = new NodeCache({
@@ -18,9 +18,17 @@ const getDecorator = async () => {
   if (decorator) {
     return decorator;
   } else {
-    const url = `${decorator_URL}/?redirectToApp=true`;
-    const { data: result } = await axios(url)
-    const { document } = new JSDOM(result).window
+    const params = {
+      enforceLogin: true,
+      level: "Level3",
+      redirectToApp: true,
+    };
+    const url = `${decorator_URL}/?${Object.entries(params)
+      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+      .join("&")}`;
+
+    const { data: result } = await axios(url);
+    const { document } = new JSDOM(result).window;
     const prop = "innerHTML";
     const data = {
       HEADER: document.getElementById("header-withmenu")[prop],
