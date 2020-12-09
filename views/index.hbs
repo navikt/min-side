@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   {{{decorator.STYLES}}}
+  {{#each podlets.dittnav.css}}
+    {{this}}
+  {{/each}}
+  {{#each podlets.dittnav.js}}
+    {{this}}
+  {{/each}}
   {{#each podlets.vta.css}}
     {{this}}
   {{/each}}
@@ -25,6 +31,9 @@
 </noscript>
 
 {{{decorator.HEADER}}}
+<div id="podlet-dittnav">
+  {{{podlets.dittnav}}}
+</div>
 <div id="podlet-vta">
   {{{podlets.vta}}}
 </div>
