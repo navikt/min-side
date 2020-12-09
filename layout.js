@@ -3,7 +3,7 @@ const Layout = require("@podium/layout");
 const path = require("path");
 const getDecorator = require("./decorator");
 
-const basePath = process.env.BASE_PATH || "/arbeid/layout-dittnav";
+const basePath = process.env.BASE_PATH || "/person/layout-dittnav";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
 const vtaUrl = process.env.VTA_URL || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json";
