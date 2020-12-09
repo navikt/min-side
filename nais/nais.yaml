@@ -44,12 +44,7 @@ spec:
     - name: DECORATOR_URL
       value: {{decorator_url}}
   accessPolicy:
-    inbound:
-      rules:
-        - application: arbeid.dev.intern.nav.no
     outbound:
-      rules:
-        - application: arbeid.dev.intern.nav.no
       external:
       {{#each podlet_hosts as |host|}}
         - host: {{host}}
