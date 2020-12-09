@@ -69,7 +69,7 @@ app.get(`${basePath}${layout.pathname()}`,
   }
 );
 
-console.log(`VTA: ${vta}`);
 console.log(`Starting on port ${port} with basePath ${basePath}`);
+console.log(`http://localhost:${port}${basePath}`);
 
 app.listen(7000);
