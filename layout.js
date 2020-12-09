@@ -18,26 +18,26 @@ const layout = new Layout({
   logger: console,
 });
 
-const dittnav = layout.client.register({
-  name: "dittnav",
-  uri: dittnavUrl,
-  resolveJs: true,
-  resolveCss: true,
-});
-
-const vta = layout.client.register({
-  name: "vta",
-  uri: vtaUrl,
-  resolveJs: true,
-  resolveCss: true,
-});
-
-const vtaSituasjon = layout.client.register({
-  name: "vta-situasjon",
-  uri: vtaSituasjonUrl,
-  resolveJs: true,
-  resolveCss: true,
-});
+const podlets = [
+  layout.client.register({
+    name: "dittnav",
+    uri: dittnavUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
+    name: "vta",
+    uri: vtaUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
+    name: "vta-situasjon",
+    uri: vtaSituasjonUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+];
 
 const app = express();
 app.use(layout.middleware());
@@ -52,25 +52,27 @@ app.get(
   `${basePath}${layout.pathname()}`,
   async (req, res, next) => {
     const incoming = res.locals.podium;
-    Promise.all([getDecorator(), dittnav.fetch(incoming), vta.fetch(incoming), vtaSituasjon.fetch(incoming)]).then(
-      (result) => {
-        console.log(result);
-        res.locals = {
-          title: "Dittnav - Layout",
-          decorator: result[0],
-          podlets: {
-            dittnav: result[1],
-            vta: result[2],
-            vtaSituasjon: result[3],
-          },
-        };
-        next();
+
+    const podletFetches = podlets.map((podlet) => podlet.fetch(incoming));
+
+    Promise.all([getDecorator(), ...podletFetches]).then((result) => {
+      console.log(result);
+
+      const podletResults = {};
+      const decoratorResult = result[0];
+      for (let i = 1; i < result.length; i++) {
+        podletResults[podlets[i - 1].name] = result[i];
       }
-    );
+
+      res.locals = {
+        title: "Dittnav - Layout",
+        decorator: decoratorResult,
+        podlets: podletResults,
+      };
+      next();
+    });
   },
   (req, res) => {
-    res.locals.css = layout.client.css();
-    res.locals.js = layout.client.js();
     res.status(200).render("index", res.locals);
   }
 );

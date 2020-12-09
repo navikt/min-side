@@ -4,26 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  {{{decorator.STYLES}}}
-  {{#each podlets.dittnav.css}}
-    {{this}}
-  {{/each}}
-  {{#each podlets.dittnav.js}}
-    {{this}}
-  {{/each}}
-  {{#each podlets.vta.css}}
-    {{this}}
-  {{/each}}
-  {{#each podlets.vta.js}}
-    {{this}}
-  {{/each}}
-  {{#each podlets.vtaSituasjon.css}}
-    {{this}}
-  {{/each}}
-  {{#each podlets.vtaSituasjon.js}}
-    {{this}}
-  {{/each}}
   <title>{{title}}</title>
+
+  {{{decorator.STYLES}}}
+
+  {{#each podlets}}
+    <!-- {{@key}} -->
+    {{#each this.css}}
+      {{this}}
+    {{/each}}
+  {{/each}}
 </head>
 <body>
 <noscript>
@@ -31,15 +21,18 @@
 </noscript>
 
 {{{decorator.HEADER}}}
-<div id="podlet-dittnav">
-  {{{podlets.dittnav}}}
-</div>
-<div id="podlet-vta">
-  {{{podlets.vta}}}
-</div>
-<div id="podlet-vta-situasjon">
-  {{{podlets.vtaSituasjon}}}
-</div>
+{{#each podlets}}
+  <div id="podlet-{{{@key}}}">
+    {{{this}}}
+  </div>
+{{/each}}
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}
+
+{{#each podlets}}
+  <!-- {{@key}} -->
+  {{#each this.js}}
+    {{this}}
+  {{/each}}
+{{/each}}
 </body>
