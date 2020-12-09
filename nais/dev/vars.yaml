@@ -9,3 +9,7 @@ decorator_url: "https://dekoratoren.dev.nav.no"
 ingressess: |
   ingresses:
     - https://person.dev.nav.no/person/layout-dittnav
+podlets:
+  - host: arbeid.dev.nav.no
+  - host: person.dev.nav.no
+  - host: dekoratoren.dev.nav.no

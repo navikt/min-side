@@ -50,7 +50,4 @@ spec:
     outbound:
       rules:
         - application: arbeid.dev.intern.nav.no
-      external:
-        - host: arbeid.dev.nav.no
-        - host: person.dev.nav.no
-        - host: dekoratoren.dev.nav.no
+      external: {{podlets}}
