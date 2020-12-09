@@ -50,4 +50,7 @@ spec:
     outbound:
       rules:
         - application: arbeid.dev.intern.nav.no
-      external: {{podlets}}
+      external:
+      {{#each podlet_hosts as |host|}}
+        - host: {{host}}
+      {{/each}}
