@@ -1,5 +1,5 @@
 const jsdom = require("jsdom");
-const request = require("request");
+const axios = require("axios");
 const NodeCache = require("node-cache");
 const { JSDOM } = jsdom;
 
@@ -13,31 +13,24 @@ const cache = new NodeCache({
   checkperiod: SECONDS_PER_MINUTE,
 });
 
-const getDecorator = () =>
-  new Promise((resolve, reject) => {
-    const decorator = cache.get("main-cache");
-    if (decorator) {
-      resolve(decorator);
-    } else {
-      const url = `${decorator_URL}/?redirectToApp=true`;
-
-      request(url, (error, response, body) => {
-        if (!error && response.statusCode >= 200 && response.statusCode < 400) {
-          const { document } = new JSDOM(body).window;
-          const prop = "innerHTML";
-          const data = {
-            HEADER: document.getElementById("header-withmenu")[prop],
-            STYLES: document.getElementById("styles")[prop],
-            FOOTER: document.getElementById("footer-withmenu")[prop],
-            SCRIPTS: document.getElementById("scripts")[prop],
-          };
-          cache.set("main-cache", data);
-          resolve(data);
-        } else {
-          reject(new Error(error));
-        }
-      });
-    }
-  });
+const getDecorator = async () => {
+  const decorator = cache.get("main-cache");
+  if (decorator) {
+    return decorator;
+  } else {
+    const url = `${decorator_URL}/?redirectToApp=true`;
+    const { data: result } = await axios(url)
+    const { document } = new JSDOM(result).window
+    const prop = "innerHTML";
+    const data = {
+      HEADER: document.getElementById("header-withmenu")[prop],
+      STYLES: document.getElementById("styles")[prop],
+      FOOTER: document.getElementById("footer-withmenu")[prop],
+      SCRIPTS: document.getElementById("scripts")[prop],
+    };
+    cache.set("main-cache", data);
+    return data
+  }
+};
 
 module.exports = getDecorator;
