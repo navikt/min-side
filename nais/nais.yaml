@@ -30,7 +30,10 @@ spec:
     requests:
       cpu: 300m
       memory: 512Mi
-  {{ingressess}}
+  ingresses:
+  {{#each ingresses as |ingress|}}
+     - {{ingress}}
+  {{/each}}
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   env:
     - name: BASE_PATH
