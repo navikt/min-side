@@ -55,27 +55,38 @@ app.get(
 
     const podletFetches = podlets.map((podlet) => podlet.fetch(incoming));
 
-    Promise.all([getDecorator(), ...podletFetches]).then((result) => {
-      console.log(result);
+    Promise.all([getDecorator(), ...podletFetches])
+      .then((result) => {
+        console.log(result);
 
-      const podletResults = {};
-      const decoratorResult = result[0];
-      for (let i = 1; i < result.length; i++) {
-        podletResults[podlets[i - 1].name] = result[i];
-      }
+        const podletResults = {};
+        const decoratorResult = result[0];
+        for (let i = 1; i < result.length; i++) {
+          podletResults[podlets[i - 1].name] = result[i];
+        }
 
-      res.locals = {
-        title: "Dittnav - Layout",
-        decorator: decoratorResult,
-        podlets: podletResults,
-      };
-      next();
-    });
+        res.locals = {
+          title: "Dittnav - Layout",
+          decorator: decoratorResult,
+          podlets: podletResults,
+        };
+        next();
+      })
+      .catch(error => {
+        next(error);
+      });
   },
   (req, res) => {
     res.status(200).render("index", res.locals);
   }
 );
+
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(500).send(
+    '<html><body><h1>Internal server error</h1></body></html>',
+  );
+});
 
 console.log(`Starting on port ${port} with basePath ${basePath}`);
 console.log(`http://localhost:${port}${basePath}`);
