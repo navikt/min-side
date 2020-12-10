@@ -26,14 +26,14 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
-    name: "dittnav-generelle-fliser",
-    uri: dittnavGenerelleFliserUrl,
+    name: "vta-situasjon",
+    uri: vtaSituasjonUrl,
     resolveJs: true,
     resolveCss: true,
   }),
   layout.client.register({
-    name: "vta-situasjon",
-    uri: vtaSituasjonUrl,
+    name: "dittnav-generelle-fliser",
+    uri: dittnavGenerelleFliserUrl,
     resolveJs: true,
     resolveCss: true,
   }),
