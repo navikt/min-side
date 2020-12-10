@@ -38,8 +38,8 @@ spec:
   env:
     - name: BASE_PATH
       value: {{base_path}}
-    - name: DITTNAV_URL
-      value: {{dittnav_url}}
+    - name: DITTNAV_PERSONALIA_URL
+      value: {{dittnav_personalia_url}}
     - name: DITTNAV_GENERELLE_FLISER_URL
       value: {{dittnav_generelle-fliser-url}}
     - name: VTA_URL
