@@ -58,25 +58,21 @@ app.use(layout.middleware());
 app.set("view engine", "hbs");
 app.set("views", path.resolve(__dirname, "./views/"));
 
-// isAlive/isReady route for Nais
 app.get(`${basePath}/isAlive|isReady`, (req, res) => res.sendStatus(200));
 
-app.get(
-  `${basePath}${layout.pathname()}`,
+app.get(`${basePath}${layout.pathname()}`,
   async (req, res, next) => {
     const incoming = res.locals.podium;
-
     const podletFetches = podlets.map((podlet) => podlet.fetch(incoming));
 
     Promise.all([getDecorator(), ...podletFetches])
       .then((result) => {
-        console.log(result);
-
-        const podletResults = {};
         const decoratorResult = result[0];
-        for (let i = 1; i < result.length; i++) {
-          podletResults[podlets[i - 1].name] = result[i];
-        }
+
+        const podletResults = result.slice(1)
+          .reduce((acc, elem, index) => (
+            acc[podlets[index].name] = elem, acc
+          ), {});
 
         res.locals = {
           title: "Dittnav - Layout",
