@@ -42,6 +42,8 @@ spec:
       value: {{dittnav_personalia_url}}
     - name: DITTNAV_GENERELLE_FLISER_URL
       value: {{dittnav_generelle-fliser-url}}
+    - name: DITTNAV_LENKELISTE_URL
+        value: {{dittnav_lenkeliste_url}}
     - name: VTA_URL
       value: {{vta_url}}
     - name: VTA_SITUASJON_URL

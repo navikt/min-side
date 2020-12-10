@@ -8,6 +8,7 @@ const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
 const dittnavPersonaliaUrl = process.env.DITTNAV_PERSONALIA_URL || "http://localhost:7300/person/podlet-dittnav-personalia/manifest.json";
 const dittnavGenerelleFliserUrl = process.env.DITTNAV_GENERELLE_FLISER_URL || "http://localhost:7400/person/podlet-dittnav-generelle-fliser/manifest.json";
+const dittnavLenkelisteUrl = process.env.DITTNAV_LENKELISTE_URL || "http://localhost:7500/person/podlet-dittnav-lenkeliste/manifest.json";
 const vtaUrl = process.env.VTA_URL || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json";
 const vtaSituasjonUrl = process.env.VTA_SITUASJON_URL || "http://localhost:7200/arbeid/podlet-vta-situasjon/manifest.json";
 
@@ -40,6 +41,12 @@ const podlets = [
   layout.client.register({
     name: "vta",
     uri: vtaUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
+    name: "dittnav-lenkeliste",
+    uri: dittnavLenkelisteUrl,
     resolveJs: true,
     resolveCss: true,
   }),
