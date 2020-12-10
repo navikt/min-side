@@ -27,7 +27,7 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
-    name: "vta-situasjon",
+    name: "podlet-vta-situasjon",
     uri: vtaSituasjonUrl,
     resolveJs: true,
     resolveCss: true,
@@ -39,7 +39,7 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
-    name: "vta",
+    name: "podlet-veientilarbeid",
     uri: vtaUrl,
     resolveJs: true,
     resolveCss: true,
