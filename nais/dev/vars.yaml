@@ -15,4 +15,4 @@ podlet_hosts:
   - person.dev.nav.no
   - dekoratoren.dev.nav.no
   - innloggingsstatus.dev.nav.no
-  - veilarbproxy.q1.svc.nais.local
+  - pto-proxy.dev.nav.no
