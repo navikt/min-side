@@ -21,7 +21,7 @@ const layout = new Layout({
 
 const podlets = [
   layout.client.register({
-    name: "dittnav-personalia",
+    name: "podlet-dittnav-personalia",
     uri: dittnavPersonaliaUrl,
     resolveJs: true,
     resolveCss: true,
@@ -33,7 +33,7 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
-    name: "dittnav-generelle-fliser",
+    name: "podlet-dittnav-generelle-fliser",
     uri: dittnavGenerelleFliserUrl,
     resolveJs: true,
     resolveCss: true,
@@ -45,7 +45,7 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
-    name: "dittnav-lenkeliste",
+    name: "podlet-dittnav-lenkeliste",
     uri: dittnavLenkelisteUrl,
     resolveJs: true,
     resolveCss: true,
