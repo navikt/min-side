@@ -95,7 +95,7 @@ app.get(
   }
 );
 
-app.use(`${layout.pathname()}assets`, express.static("assets"));
+app.use(`${layout.pathname()}/assets`, express.static("assets"));
 
 app.use((error, req, res, next) => {
   console.error(error);
