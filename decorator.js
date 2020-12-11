@@ -5,7 +5,7 @@ const { JSDOM } = jsdom;
 
 const SECONDS_PER_MINUTE = 60;
 const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
-const decorator_URL = process.env.DECORATOR_URL || 'https://dekoratoren.dev.nav.no';
+const DECORATOR_URL = process.env.DECORATOR_URL || 'https://dekoratoren.dev.nav.no';
 const DITTNAV_URL = process.env.DECORATOR_URL || 'https://person.dev.nav.no/person/layout-dittnav';
 
 // Refresh cache every hour
@@ -27,7 +27,7 @@ const getDecorator = async () => {
         { url: `${DITTNAV_URL}`, title: "Ditt NAV" },
       ]),
     };
-    const url = `${decorator_URL}/?${Object.entries(params)
+    const url = `${DECORATOR_URL}/?${Object.entries(params)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join("&")}`;
 
