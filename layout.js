@@ -102,6 +102,10 @@ app.use((error, req, res, next) => {
   res.status(500).send("<html><body><h1>Internal server error</h1></body></html>");
 });
 
+layout.client.refreshManifests().then(() => {
+  console.log("Manifests refreshed");
+});
+
 console.log(`Starting on port ${port} with basePath ${basePath}`);
 console.log(`http://localhost:${port}${basePath}`);
 
