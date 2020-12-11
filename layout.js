@@ -6,15 +6,20 @@ const getDecorator = require("./decorator");
 const basePath = process.env.BASE_PATH || "/person/layout-dittnav";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
-const dittnavPersonaliaUrl = process.env.DITTNAV_PERSONALIA_URL || "http://localhost:7300/person/podlet-dittnav-personalia/manifest.json";
-const dittnavGenerelleFliserUrl = process.env.DITTNAV_GENERELLE_FLISER_URL || "http://localhost:7400/person/podlet-dittnav-generelle-fliser/manifest.json";
-const dittnavLenkelisteUrl = process.env.DITTNAV_LENKELISTE_URL || "http://localhost:7500/person/podlet-dittnav-lenkeliste/manifest.json";
+const dittnavPersonaliaUrl =
+  process.env.DITTNAV_PERSONALIA_URL || "http://localhost:7300/person/podlet-dittnav-personalia/manifest.json";
+const dittnavGenerelleFliserUrl =
+  process.env.DITTNAV_GENERELLE_FLISER_URL ||
+  "http://localhost:7400/person/podlet-dittnav-generelle-fliser/manifest.json";
+const dittnavLenkelisteUrl =
+  process.env.DITTNAV_LENKELISTE_URL || "http://localhost:7500/person/podlet-dittnav-lenkeliste/manifest.json";
 const vtaUrl = process.env.VTA_URL || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json";
-const vtaSituasjonUrl = process.env.VTA_SITUASJON_URL || "http://localhost:7200/arbeid/podlet-vta-situasjon/manifest.json";
+const vtaSituasjonUrl =
+  process.env.VTA_SITUASJON_URL || "http://localhost:7200/arbeid/podlet-vta-situasjon/manifest.json";
 
 const layout = new Layout({
   name: "layout-dittnav",
-  pathname: "/",
+  pathname: basePath,
   development: isDevelopmentEnv,
   logger: console,
 });
@@ -60,7 +65,8 @@ app.set("views", path.resolve(__dirname, "./views/"));
 
 app.get(`${basePath}/isAlive|isReady`, (req, res) => res.sendStatus(200));
 
-app.get(`${basePath}${layout.pathname()}`,
+app.get(
+  `${layout.pathname()}`,
   async (req, res, next) => {
     const incoming = res.locals.podium;
     const podletFetches = podlets.map((podlet) => podlet.fetch(incoming));
@@ -69,10 +75,9 @@ app.get(`${basePath}${layout.pathname()}`,
       .then((result) => {
         const decoratorResult = result[0];
 
-        const podletResults = result.slice(1)
-          .reduce((acc, elem, index) => (
-            acc[podlets[index].name] = elem, acc
-          ), {});
+        const podletResults = result
+          .slice(1)
+          .reduce((acc, elem, index) => ((acc[podlets[index].name] = elem), acc), {});
 
         res.locals = {
           title: "Dittnav - Layout",
@@ -81,7 +86,7 @@ app.get(`${basePath}${layout.pathname()}`,
         };
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         next(error);
       });
   },
@@ -90,13 +95,11 @@ app.get(`${basePath}${layout.pathname()}`,
   }
 );
 
-app.use(`${basePath}${layout.pathname()}assets`, express.static('assets'));
+app.use(`${basePath}${layout.pathname()}assets`, express.static("assets"));
 
 app.use((error, req, res, next) => {
   console.error(error);
-  res.status(500).send(
-    '<html lang="no"><body><h1>Internal server error</h1></body></html>',
-  );
+  res.status(500).send('<html lang="no"><body><h1>Internal server error</h1></body></html>');
 });
 
 console.log(`Starting on port ${port} with basePath ${basePath}`);
