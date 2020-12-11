@@ -95,7 +95,7 @@ app.use(`${basePath}${layout.pathname()}assets`, express.static('assets'));
 app.use((error, req, res, next) => {
   console.error(error);
   res.status(500).send(
-    '<html><body><h1>Internal server error</h1></body></html>',
+    '<html lang="no"><body><h1>Internal server error</h1></body></html>',
   );
 });
 
