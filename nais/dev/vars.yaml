@@ -14,3 +14,5 @@ podlet_hosts:
   - arbeid.dev.nav.no
   - person.dev.nav.no
   - dekoratoren.dev.nav.no
+  - innloggingsstatus.dev.nav.no
+  - veilarbproxy.q1.svc.nais.local
