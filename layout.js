@@ -52,7 +52,7 @@ app.set("views", path.resolve(__dirname, "./views/"));
 
 app.use(`${layout.pathname()}/assets`, express.static("assets"));
 
-app.get(`${basePath}/isAlive|isReady`, (req, res) => {
+app.get(`${layout.pathname()}/isAlive|isReady`, (req, res) => {
   res.sendStatus(200);
 });
 
