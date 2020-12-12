@@ -1,7 +1,7 @@
 const express = require("express");
 const Layout = require("@podium/layout");
 const path = require("path");
-const getDecorator = require("./decorator");
+const fetchMiddleware = require("./middleware");
 const { basePath, port, isDevelopmentEnv, urls } = require("./config");
 
 const layout = new Layout({
@@ -50,42 +50,17 @@ app.use(layout.middleware());
 app.set("view engine", "hbs");
 app.set("views", path.resolve(__dirname, "./views/"));
 
-app.get(`${basePath}/isAlive|isReady`, (req, res) => res.sendStatus(200));
-
-app.get(
-  `${layout.pathname()}`,
-  async (req, res, next) => {
-    const incoming = res.locals.podium;
-    const podletFetches = podlets.map((podlet) => podlet.fetch(incoming));
-
-    Promise.all([getDecorator(), ...podletFetches])
-      .then((result) => {
-        const decoratorResult = result[0];
-
-        const podletResults = result
-          .slice(1)
-          .reduce((acc, elem, index) => ((acc[podlets[index].name] = elem), acc), {});
-
-        res.locals = {
-          title: "Dittnav - Layout",
-          decorator: decoratorResult,
-          podlets: podletResults,
-        };
-        next();
-      })
-      .catch((error) => {
-        next(error);
-      });
-  },
-  (req, res) => {
-    res.status(200).render("index", res.locals);
-  }
-);
-
 app.use(`${layout.pathname()}/assets`, express.static("assets"));
 
+app.get(`${basePath}/isAlive|isReady`, (req, res) => {
+  res.sendStatus(200);
+});
+
+app.get(`${layout.pathname()}`, fetchMiddleware(podlets), (req, res) => {
+  res.status(200).render("index", res.locals);
+});
+
 app.use((error, req, res, next) => {
-  console.error(error);
   res.status(500).send("<html><body><h1>Internal server error</h1></body></html>");
 });
 
