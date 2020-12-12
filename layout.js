@@ -2,20 +2,7 @@ const express = require("express");
 const Layout = require("@podium/layout");
 const path = require("path");
 const getDecorator = require("./decorator");
-
-const basePath = process.env.BASE_PATH || "/person/layout-dittnav";
-const port = process.env.PORT || 7000;
-const isDevelopmentEnv = true;
-const dittnavPersonaliaUrl =
-  process.env.DITTNAV_PERSONALIA_URL || "http://localhost:7300/person/podlet-dittnav-personalia/manifest.json";
-const dittnavGenerelleFliserUrl =
-  process.env.DITTNAV_GENERELLE_FLISER_URL ||
-  "http://localhost:7400/person/podlet-dittnav-generelle-fliser/manifest.json";
-const dittnavLenkelisteUrl =
-  process.env.DITTNAV_LENKELISTE_URL || "http://localhost:7500/person/podlet-dittnav-lenkeliste/manifest.json";
-const vtaUrl = process.env.VTA_URL || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json";
-const vtaSituasjonUrl =
-  process.env.VTA_SITUASJON_URL || "http://localhost:7200/arbeid/podlet-vta-situasjon/manifest.json";
+const { basePath, port, isDevelopmentEnv, urls } = require("./config");
 
 const layout = new Layout({
   name: "layout-dittnav",
@@ -27,31 +14,31 @@ const layout = new Layout({
 const podlets = [
   layout.client.register({
     name: "podlet-dittnav-personalia",
-    uri: dittnavPersonaliaUrl,
+    uri: urls.dittnavPersonaliaUrl,
     resolveJs: true,
     resolveCss: true,
   }),
   layout.client.register({
     name: "podlet-vta-situasjon",
-    uri: vtaSituasjonUrl,
+    uri: urls.vtaSituasjonUrl,
     resolveJs: true,
     resolveCss: true,
   }),
   layout.client.register({
     name: "podlet-dittnav-generelle-fliser",
-    uri: dittnavGenerelleFliserUrl,
+    uri: urls.dittnavGenerelleFliserUrl,
     resolveJs: true,
     resolveCss: true,
   }),
   layout.client.register({
     name: "podlet-veientilarbeid",
-    uri: vtaUrl,
+    uri: urls.vtaUrl,
     resolveJs: true,
     resolveCss: true,
   }),
   layout.client.register({
     name: "podlet-dittnav-lenkeliste",
-    uri: dittnavLenkelisteUrl,
+    uri: urls.dittnavLenkelisteUrl,
     resolveJs: true,
     resolveCss: true,
   }),
