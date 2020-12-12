@@ -8,12 +8,17 @@
     "express": "4.17.1",
     "hbs": "4.1.1",
     "jsdom": "16.4.0",
-    "node-cache": "5.1.2"
+    "node-cache": "5.1.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-scripts": "4.0.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"
   },
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "layout": "node layout.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "test": "node --version"

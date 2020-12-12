@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{{title}}</title>
+    <link href="layout-dittnav/assets/layout.css" media="all" rel="stylesheet" />
+    {{{decorator.STYLES}}}
+
+    {{#each podlets}}
+    <!-- {{@key}} -->
+    {{#each this.css}}
+    {{this}}
+    {{/each}}
+    {{/each}}
+</head>
+<body>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+
+{{{decorator.HEADER}}}
+<div id="root"></div>
+{{#each podlets}}
+<div id="podlet-{{{@key}}}">
+    {{{this}}}
+</div>
+{{/each}}
+{{{decorator.FOOTER}}}
+{{{decorator.SCRIPTS}}}
+
+{{#each podlets}}
+<!-- {{@key}} -->
+{{#each this.js}}
+{{this}}
+{{/each}}
+{{/each}}
+</body>
