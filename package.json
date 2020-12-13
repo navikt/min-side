@@ -3,17 +3,27 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@navikt/nav-dekoratoren-moduler": "1.0.21",
     "@podium/layout": "4.6.24",
     "axios": "0.21.0",
+    "classnames": "2.2.6",
     "express": "4.17.1",
     "hbs": "4.1.1",
     "jsdom": "16.4.0",
-    "node-cache": "5.1.2"
+    "nav-frontend-ikoner-assets": "2.0.8",
+    "nav-frontend-spinner": "2.0.12",
+    "nav-frontend-spinner-style": "0.2.9",
+    "node-cache": "5.1.2",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-scripts": "4.0.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"
   },
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "layout": "node layout.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "test": "node --version"

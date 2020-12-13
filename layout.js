@@ -47,10 +47,12 @@ const podlets = [
 const app = express();
 app.use(layout.middleware());
 
-app.set("view engine", "hbs");
-app.set("views", path.resolve(__dirname, "./views/"));
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
+app.set("views", path.resolve(__dirname, "./build"));
 
-app.use(`${layout.pathname()}/assets`, express.static("assets"));
+app.use(`${layout.pathname()}/static`, express.static("build/static"));
+app.use(`/static`, express.static("build/static"));
 
 app.get(`${layout.pathname()}/isAlive|isReady`, (req, res) => {
   res.sendStatus(200);

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <title>{{title}}</title>
-  <link href="layout-dittnav/assets/layout.css" media="all" rel="stylesheet" />
   {{{decorator.STYLES}}}
 
   {{#each podlets}}
@@ -21,11 +20,15 @@
 </noscript>
 
 {{{decorator.HEADER}}}
-{{#each podlets}}
-  <div id="podlet-{{{@key}}}">
-    {{{this}}}
+<div id="dittnav-decorator-modules">
+  <div class="dittnav-podlet-container">
+    {{#each podlets}}
+      <div id="podlet-{{{@key}}}">
+        {{{this}}}
+      </div>
+    {{/each}}
   </div>
-{{/each}}
+</div>
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}
 
