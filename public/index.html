@@ -1,39 +1,41 @@
 <!doctype html>
 <html lang="no">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>{{title}}</title>
-    <link href="layout-dittnav/assets/layout.css" media="all" rel="stylesheet" />
-    {{{decorator.STYLES}}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>{{title}}</title>
+  {{{decorator.STYLES}}}
 
-    {{#each podlets}}
+  {{#each podlets}}
     <!-- {{@key}} -->
     {{#each this.css}}
-    {{this}}
+      {{this}}
     {{/each}}
-    {{/each}}
+  {{/each}}
 </head>
 <body>
 <noscript>
-    You need to enable JavaScript to run this app.
+  You need to enable JavaScript to run this app.
 </noscript>
 
 {{{decorator.HEADER}}}
-<div id="root"></div>
-{{#each podlets}}
-<div id="podlet-{{{@key}}}">
-    {{{this}}}
+<div id="dittnav-decorator-modules">
+  <div class="dittnav-podlet-container">
+    {{#each podlets}}
+      <div id="podlet-{{{@key}}}">
+        {{{this}}}
+      </div>
+    {{/each}}
+  </div>
 </div>
-{{/each}}
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}
 
 {{#each podlets}}
-<!-- {{@key}} -->
-{{#each this.js}}
-{{this}}
-{{/each}}
+  <!-- {{@key}} -->
+  {{#each this.js}}
+    {{this}}
+  {{/each}}
 {{/each}}
 </body>
