@@ -7,6 +7,7 @@ dittnav_personalia_url: "https://person.dev.nav.no/person/podlet-dittnav-persona
 dittnav_generelle-fliser-url: "https://person.dev.nav.no/person/podlet-dittnav-generelle-fliser/manifest.json"
 vta_situasjon_url: "https://arbeid.dev.nav.no/arbeid/podlet-vta-situasjon/manifest.json"
 vta_okonomi_url: "https://person.dev.nav.no/arbeid/podlet-dittnav-lenkeliste"
+vta_jobb_url: "https://arbeid.dev.nav.no/arbeid/podlet-vta-jobb"
 decorator_url: "https://dekoratoren.dev.nav.no"
 ingresses:
   - https://person.dev.nav.no/person/layout-dittnav

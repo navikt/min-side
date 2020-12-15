@@ -42,6 +42,12 @@ const podlets = [
     resolveJs: true,
     resolveCss: true,
   }),
+  layout.client.register({
+    name: "podlet-vta-jobb",
+    uri: urls.vtaJobbUrl,
+    resolveJs: false,
+    resolveCss: false,
+  }),
 ];
 
 const app = express();

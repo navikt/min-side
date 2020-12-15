@@ -44,6 +44,8 @@ spec:
       value: {{dittnav_generelle-fliser-url}}
     - name: VTA_URL
       value: {{vta_url}}
+    - name: VTA_JOBB_URL
+      value: {{vta_jobb_url}}
     - name: VTA_SITUASJON_URL
       value: {{vta_situasjon_url}}
     - name: VTA_OKONOMI_URL
