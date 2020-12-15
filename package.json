@@ -22,8 +22,8 @@
     "prettier": "2.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "PUBLIC_URL=/person/layout-dittnav react-scripts start",
+    "build": "PUBLIC_URL=/person/layout-dittnav react-scripts build",
     "layout": "node layout.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "test": "node --version"
@@ -42,6 +42,5 @@
   },
   "prettier": {
     "printWidth": 120
-  },
-  "homepage": "/person/layout-dittnav"
+  }
 }
