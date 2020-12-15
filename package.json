@@ -10,6 +10,7 @@
     "express": "4.17.1",
     "hbs": "4.1.1",
     "jsdom": "16.4.0",
+    "less-plugin-npm-import": "^2.1.0",
     "nav-frontend-ikoner-assets": "2.0.8",
     "nav-frontend-spinner": "2.0.12",
     "nav-frontend-spinner-style": "0.2.9",
@@ -19,11 +20,14 @@
     "react-scripts": "4.0.1"
   },
   "devDependencies": {
+    "less-watch-compiler": "^1.14.6",
     "prettier": "2.2.1"
   },
   "scripts": {
     "start": "PUBLIC_URL=/person/layout-dittnav react-scripts start",
-    "build": "PUBLIC_URL=/person/layout-dittnav react-scripts build",
+    "build": "npm run build:less && PUBLIC_URL=/person/layout-dittnav react-scripts build",
+    "build:less": "lessc --npm-import=\"prefix=~\" src/less/index.less src/css/index.css",
+    "build:css": "less-watch-compiler src/less src/css index.less --plugins=npm-import=\"prefix=~\"",
     "layout": "node layout.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "test": "node --version"
