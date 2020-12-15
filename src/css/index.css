@@ -1,0 +1,10 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  background: #E9E7E7;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
