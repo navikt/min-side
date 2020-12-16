@@ -36,7 +36,7 @@ spec:
   {{/each}}
   sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
   envFrom:
-    - secret: dittnav-layout-secret
+    - secret: layout-dittnav-secret
   env:
     - name: BASE_PATH
       value: {{base_path}}
