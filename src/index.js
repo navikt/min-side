@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from "./App";
+import Login from "./components/login/Login";
 import './css/index.css';
+import Lenkeliste from "./components/lenkeliste/Lenkeliste";
+import Personalia from "./components/personalia/Personalia";
 
 ReactDOM.render(
-  <App />, document.getElementById('dittnav-decorator-modules')
+  <Login />, document.getElementById('dittnav-login')
+);
+
+ReactDOM.render(
+  <Personalia />, document.getElementById('dittnav-personalia')
+);
+
+ReactDOM.render(
+  <Lenkeliste />, document.getElementById('dittnav-lenkeliste')
 );
