@@ -1,12 +1,26 @@
 import React from 'react';
-import Panel from "nav-frontend-paneler";
+import { shape, arrayOf, string } from 'prop-types';
+import Lenke from "./Lenke";
 
-const Lenkeliste = () => (
-  <div className="App">
-    <Panel border>
-      Lenkeliste
-    </Panel>
+const Lenkeliste = ({ lenker }) => (
+  <div className="flere-tjenester">
+    <nav className="flere-tjenester__links">
+      {lenker.map(lenke => (
+        <Lenke tittel={lenke.tittel} url={lenke.url}/>
+      ))}
+    </nav>
   </div>
 );
+
+Lenkeliste.propTypes = {
+  lenker: arrayOf(shape({
+    url: string.isRequired,
+    tittel: string.isRequired,
+  })),
+};
+
+Lenkeliste.defaultProps = {
+  lenker: [],
+};
 
 export default Lenkeliste;
