@@ -264,6 +264,24 @@
     column-count: 3;
   }
 }
+.person-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.person-info__ikon {
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 1rem;
+}
+.person-info h1 {
+  text-transform: capitalize;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
 html,
 body {
   height: 100%;

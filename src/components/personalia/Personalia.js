@@ -1,10 +1,15 @@
 import React from 'react';
-import Panel from "nav-frontend-paneler";
+import PersonIkon from '../../assets/PersonIkon.svg';
 
-const Personalia = () => (
-  <Panel border>
-    Personalia
-  </Panel>
-);
+const Personalia = () => {
+  const navn = 'VINAYAGUM-MASK AMIZIC';
+
+  return (
+    <div className="person-info">
+      <img className="person-info__ikon" src={PersonIkon} alt="" />
+      <h1>{navn}</h1>
+    </div>
+  );
+};
 
 export default Personalia;
