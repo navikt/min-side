@@ -1,23 +1,14 @@
 import React from 'react';
 import {Undertittel} from "nav-frontend-typografi";
 import Lenkeliste from "./Lenkeliste";
-
-const lenker = [
-  {
-    url: "https://test-url",
-    tittel: "Lenke A",
-  },
-  {
-    url: "https://test-url",
-    tittel: "Lenke B",
-  }];
+import {generelleLenker} from "../../utils/lenker";
 
 const LenkelisteContainer = () => (
   <>
     <Undertittel className="flere-tjenester__subheader">
       Flere tjenester
     </Undertittel>
-    <Lenkeliste lenker={lenker}/>
+    <Lenkeliste lenker={generelleLenker}/>
   </>
 );
 
