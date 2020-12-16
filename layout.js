@@ -45,8 +45,8 @@ const podlets = [
   layout.client.register({
     name: "podlet-vta-jobb",
     uri: urls.vtaJobbUrl,
-    resolveJs: false,
-    resolveCss: false,
+    resolveJs: true,
+    resolveCss: true,
   }),
 ];
 
