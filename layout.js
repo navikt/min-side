@@ -13,12 +13,6 @@ const layout = new Layout({
 
 const podlets = [
   layout.client.register({
-    name: "podlet-dittnav-personalia",
-    uri: urls.dittnavPersonaliaUrl,
-    resolveJs: true,
-    resolveCss: true,
-  }),
-  layout.client.register({
     name: "podlet-vta-situasjon",
     uri: urls.vtaSituasjonUrl,
     resolveJs: true,
