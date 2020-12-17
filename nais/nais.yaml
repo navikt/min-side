@@ -42,9 +42,6 @@ spec:
       value: {{base_path}}
   accessPolicy:
     outbound:
-      rules:
-        - application: pto-proxy
-          namespace: pto
       external:
       {{#each podlet_hosts as |host|}}
         - host: {{host}}
