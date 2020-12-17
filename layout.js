@@ -62,6 +62,13 @@ app.get(`${layout.pathname()}`, fetchMiddleware(podlets), (req, res) => {
   res.status(200).render("index", res.locals);
 });
 
+layout.metrics.on("data", (metric) => {
+  const ts = new Date(metric.timestamp * 1000).toISOString();
+  const labelString = metric.labels.map((label) => `${label.name}=${label.value}`).join(", ");
+  const message = `${ts}\t${metric.name}{${labelString}}\t${metric.value}`;
+  console.log(message);
+});
+
 app.use((error, req, res, next) => {
   res.status(500).send("<html><body><h1>Internal server error</h1></body></html>");
 });
