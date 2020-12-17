@@ -1,6 +1,8 @@
 const express = require("express");
 const Layout = require("@podium/layout");
 const path = require("path");
+const promClient = require("prom-client");
+const PrometheusConsumer = require("@metrics/prometheus-consumer");
 const fetchMiddleware = require("./middleware");
 const { basePath, port, isDevelopmentEnv, urls } = require("./config");
 
@@ -44,6 +46,14 @@ const podlets = [
   }),
 ];
 
+// Set up prometheus client with podium metrics
+
+promClient.collectDefaultMetrics();
+const metricsConsumer = new PrometheusConsumer({ client: promClient });
+metricsConsumer.on("error", (err) => console.error(err));
+layout.metrics.pipe(metricsConsumer);
+
+// Express setup
 const app = express();
 app.use(layout.middleware());
 
@@ -62,11 +72,9 @@ app.get(`${layout.pathname()}`, fetchMiddleware(podlets), (req, res) => {
   res.status(200).render("index", res.locals);
 });
 
-layout.metrics.on("data", (metric) => {
-  const ts = new Date(metric.timestamp * 1000).toISOString();
-  const labelString = metric.labels.map((label) => `${label.name}=${label.value}`).join(", ");
-  const message = `${ts}\t${metric.name}{${labelString}}\t${metric.value}`;
-  console.log(message);
+app.get("/metrics", async function (req, res) {
+  const metrics = await metricsConsumer.metrics();
+  res.set("Content-Type", metricsConsumer.contentType()).send(metrics);
 });
 
 app.use((error, req, res, next) => {
