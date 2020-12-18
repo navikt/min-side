@@ -1,0 +1,65 @@
+@import (reference) '~nav-frontend-core/less/_variabler';
+@import (reference) '~nav-frontend-paneler-style/src/mixins';
+
+.panel-med-ikon {
+  margin-bottom: 1em;
+  padding: 0.75em 0.75em;
+  display: flex;
+  flex-direction: row;
+
+  .panel__innhold {
+    padding: 0;
+  }
+
+  &__ikon {
+    align-self: center;
+  }
+
+  &__tekst {
+    align-self: center;
+    padding-left: 1em;
+  }
+
+  &__knapp {
+    align-self: center;
+    margin-left: auto;
+    padding-right: 0.5em;
+  }
+}
+
+.panel-lenke {
+  font-family: @font-family;
+  padding-left: 0.25em;
+}
+
+#panel-lenke-id {
+  border-bottom: none;
+}
+
+.utvid-tekst-lenke__aapne {
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.utvid-tekst-lenke__skjul {
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-block;
+  margin-top: 0.625em;
+  margin-bottom: 0.315em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: @mobile-breakpoint) {
+  .utvid-tekst-lenke__skjul {
+    margin-top: 1.563em;
+    margin-bottom: 0.625em;
+  }
+}

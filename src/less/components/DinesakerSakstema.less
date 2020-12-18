@@ -1,0 +1,30 @@
+@import (reference) '~nav-frontend-core/less/_variabler';
+
+.sak-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  margin-top: 0.85em;
+
+  .sak-lenke {
+    &:focus,
+    &--focus {
+      color: @navBla;
+      background-color: @white;
+      outline: @fokusFarge;
+    }
+  }
+
+  .sak-temanavn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  .sak-status {
+    text-decoration: none;
+    color: @navMorkGra;
+  }
+}
