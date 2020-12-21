@@ -33,14 +33,14 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
-    name: "podlet-vta-okonomi",
-    uri: urls.vtaOkonomi,
+    name: "podlet-vta-jobb",
+    uri: urls.vtaJobbUrl,
     resolveJs: true,
     resolveCss: true,
   }),
   layout.client.register({
-    name: "podlet-vta-jobb",
-    uri: urls.vtaJobbUrl,
+    name: "podlet-vta-okonomi",
+    uri: urls.vtaOkonomi,
     resolveJs: true,
     resolveCss: true,
   }),
