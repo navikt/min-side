@@ -44,10 +44,15 @@ const podlets = [
     resolveJs: true,
     resolveCss: true,
   }),
+  layout.client.register({
+    name: "podlet-dittnav-lenkeliste",
+    uri: urls.dittnavLenkeliste,
+    resolveJs: true,
+    resolveCss: true,
+  }),
 ];
 
 // Set up prometheus client with podium metrics
-
 const metricsConsumer = new PrometheusConsumer({ client: promClient });
 promClient.collectDefaultMetrics({ register: metricsConsumer.registry });
 metricsConsumer.on("error", (err) => console.error(err));

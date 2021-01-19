@@ -7,6 +7,8 @@ const urls = {
     || "http://localhost:7300/person/podlet-dittnav-personalia/manifest.json",
   dittnavGenerelleFliserUrl:process.env.DITTNAV_GENERELLE_FLISER_URL
     || "http://localhost:7400/person/podlet-dittnav-generelle-fliser/manifest.json",
+  dittnavLenkelisteUrl:process.env.DITTNAV_LENKELISTE_URL
+    || "http://localhost:7600/person/podlet-dittnav-lenkeliste/manifest.json",
   vtaUrl: process.env.VTA_URL
     || "http://localhost:7100/arbeid/podlet-veientilarbeid/manifest.json",
   vtaJobbUrl: process.env.VTA_JOBB_URL
