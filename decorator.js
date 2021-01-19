@@ -27,6 +27,7 @@ const getDecorator = async () => {
         { url: `${DITTNAV_URL}`, title: "Ditt NAV" },
       ]),
     };
+    console.log(`Loading decorator from ${DECORATOR_URL} with params ${JSON.stringify(params)}`);
     const url = `${DECORATOR_URL}/?${Object.entries(params)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join("&")}`;
