@@ -46,7 +46,7 @@ const podlets = [
   }),
   layout.client.register({
     name: "podlet-dittnav-lenkeliste",
-    uri: urls.dittnavLenkeliste,
+    uri: urls.dittnavLenkelisteUrl,
     resolveJs: true,
     resolveCss: true,
   }),
