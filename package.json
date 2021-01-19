@@ -40,7 +40,6 @@
     "build:less": "lessc --npm-import=\"prefix=~\" src/index.less src/css/index.css",
     "build:css": "less-watch-compiler src/ src/css index.less --plugins=npm-import=\"prefix=~\"",
     "layout": "node layout.js",
-    "layout-local": "DECORATOR_URL=http://localhost:8100/dekoratoren node layout.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "test": "node --version"
   },
