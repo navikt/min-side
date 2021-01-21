@@ -58,6 +58,13 @@ const podlets = [
   }),
 ];
 
+// Context parsers
+layout.context.register("authlevel", {
+  parse(incoming = {}) {
+    return "layout-server-auth";
+  },
+});
+
 // Set up prometheus client with podium metrics
 const metricsConsumer = new PrometheusConsumer({ client: promClient });
 promClient.collectDefaultMetrics({ register: metricsConsumer.registry });
