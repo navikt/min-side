@@ -3,6 +3,7 @@ const Layout = require("@podium/layout");
 const path = require("path");
 const promClient = require("prom-client");
 const PrometheusConsumer = require("@metrics/prometheus-consumer");
+const axios = require("axios");
 const fetchMiddleware = require("./middleware");
 const { basePath, port, isDevelopmentEnv, urls } = require("./config");
 
@@ -60,8 +61,18 @@ const podlets = [
 
 // Context parsers
 layout.context.register("authlevel", {
-  parse(incoming = {}) {
-    return "layout-server-auth";
+  parse: async function (inc) {
+    try {
+      const resp = await axios.get("https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth", {
+        headers: {
+          cookie: inc.request.headers["cookie"],
+        },
+      });
+      return resp.data.securityLevel;
+    } catch (e) {
+      console.error("Error getting security level", e);
+      return "N/A";
+    }
   },
 });
 
