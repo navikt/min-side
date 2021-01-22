@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from "./components/Login";
+import LoginLoader from "./components/LoginLoader";
 import './css/index.css';
 
 ReactDOM.render(
-  <Login />, document.getElementById('dittnav-login')
+  <LoginLoader />, document.getElementById('dittnav-login-loader')
 );

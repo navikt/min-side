@@ -1,8 +1,8 @@
 import React from 'react';
 import { EnforceLoginLoader } from "@navikt/nav-dekoratoren-moduler";
 
-const Login = () => {
+const LoginLoader = () => {
   return <EnforceLoginLoader />
 };
 
-export default Login;
+export default LoginLoader;
