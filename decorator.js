@@ -21,7 +21,7 @@ const getDecorator = async () => {
   } else {
     const params = {
       enforceLogin: true,
-      level: "Level3",
+      level: "Level4",
       redirectToApp: true,
       breadcrumbs: JSON.stringify([
         { url: `${DITTNAV_URL}`, title: "Ditt NAV" },
