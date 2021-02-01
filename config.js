@@ -5,6 +5,8 @@ const isDevelopmentEnv = true;
 const urls = {
   dittnavPersonaliaUrl: process.env.DITTNAV_PERSONALIA_URL
     || "http://localhost:7300/person/podlet-dittnav-personalia/manifest.json",
+  dittnavMeldingerUrl: process.env.DITTNAV_MELDINGER_URL
+    || "http://localhost:7300/person/podlet-dittnav-meldinger/manifest.json",
   dittnavGenerelleFliserUrl:process.env.DITTNAV_GENERELLE_FLISER_URL
     || "http://localhost:7400/person/podlet-dittnav-generelle-fliser/manifest.json",
   dittnavLenkelisteUrl:process.env.DITTNAV_LENKELISTE_URL

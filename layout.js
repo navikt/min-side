@@ -28,6 +28,12 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
+    name: "podlet-dittnav-meldinger",
+    uri: urls.dittnavMeldingerUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
     name: "podlet-dittnav-generelle-fliser",
     uri: urls.dittnavGenerelleFliserUrl,
     resolveJs: true,
