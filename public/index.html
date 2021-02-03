@@ -22,11 +22,22 @@
 
 {{{decorator.HEADER}}}
 <div id="dittnav-login-loader"></div>
-{{#each podlets}}
-  <div id="{{{@key}}}-container">
-    {{{this}}}
+
+<main role="main">
+  <div class="container">
+    <div class="row">
+      <div class="maincontent side-innhold">
+        <div class="col-md-12" id="dittnav-main-container">
+        {{#each podlets}}
+          <div id="{{{@key}}}-container">
+          {{{this}}}
+          </div>
+        {{/each}}
+        </div>
+      </div>
+    </div>
   </div>
-{{/each}}
+</main>
 
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}
