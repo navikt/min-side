@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === "production") {
     dsn: "https://ff3cc443e4564378b15df1731ca7861e@sentry.gc.nav.no/68",
     autoSessionTracking: false,
   });
+  console.log("init sentry")
 }
 
 ReactDOM.render(
