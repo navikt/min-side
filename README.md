@@ -1,5 +1,5 @@
-# Layout-dittnav
-Podium-layout for dittnav.
+# Min side
+Podium-layout for min side.
 
 # Kom i gang
 1. Installer npm-pakker ved å kjøre `npm install`
