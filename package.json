@@ -22,7 +22,7 @@
     "nav-frontend-spinner": "2.0.12",
     "nav-frontend-spinner-style": "0.2.9",
     "node-cache": "5.1.2",
-    "prom-client": "13.0.0",
+    "prom-client": "13.1.0",
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
