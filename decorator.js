@@ -20,7 +20,7 @@ const getDecorator = async () => {
     return decorator;
   } else {
     const params = {
-      enforceLogin: false,
+      enforceLogin: true,
       level: "Level4",
       redirectToApp: true,
       breadcrumbs: JSON.stringify([
