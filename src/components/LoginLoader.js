@@ -2,7 +2,7 @@ import React from 'react';
 import { EnforceLoginLoader } from "@navikt/nav-dekoratoren-moduler";
 
 const LoginLoader = () => {
-  return null
+  return <EnforceLoginLoader />
 };
 
 export default LoginLoader;
