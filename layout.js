@@ -22,6 +22,12 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
+    name: "podlet-vta-situasjon",
+    uri: urls.vtaSituasjonUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
     name: "podlet-dittnav-meldinger",
     uri: urls.dittnavMeldingerUrl,
     resolveJs: true,
