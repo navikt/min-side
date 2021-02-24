@@ -13,7 +13,7 @@
       "react-dom": "https://cdn.skypack.dev/react-dom"
     }
   }
-</script>
+  </script>
   {{{decorator.STYLES}}}
 
   {{#each podlets}}
@@ -37,7 +37,7 @@
       <div class="maincontent side-innhold">
         <div class="col-md-12" id="dittnav-main-container">
         {{#each podlets}}
-          <div type="module" id="{{{@key}}}-container">
+          <div id="{{{@key}}}-container">
           {{{this}}}
           </div>
         {{/each}}
