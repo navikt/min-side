@@ -6,11 +6,11 @@ on:
       - main
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/layout-dittnav:${{ github.sha }}
+  IMAGE: docker.pkg.github.com/${{ github.repository }}/min-side:${{ github.sha }}
   LATEST_IMAGE: docker.pkg.github.com/${{ github.repository }}/layout-dittnav:latest
   BASE_PATH: /person/dittnav
-  IMAGE_CACHE_RUNTIME: docker.pkg.github.com/${{ github.repository }}/layout-dittnav-build-cache-runtime
-  IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/layout-dittnav-build-cache-builder
+  IMAGE_CACHE_RUNTIME: docker.pkg.github.com/${{ github.repository }}/min-side-build-cache-runtime
+  IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/min-side-build-cache-builder
 
 jobs:
   test:

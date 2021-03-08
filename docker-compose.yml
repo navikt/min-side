@@ -16,7 +16,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      REDIRECT_URL: "http://localhost:7000/person/layout-dittnav"
+      REDIRECT_URL: "http://localhost:7000/person/min-side"
       AUTO_REDIRECT_TO_FRONTEND: "true"
     depends_on:
       - oidc-provider

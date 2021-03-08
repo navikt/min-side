@@ -1,9 +1,9 @@
-app: layout-dittnav
+app: min-side
 namespace: personbruker
 team: personbruker
-base_path: "/person/layout-dittnav"
+base_path: "/person/min-side"
 ingresses:
-  - https://person.dev.nav.no/person/layout-dittnav
+  - https://person.dev.nav.no/person/min-side
 podlet_hosts:
   - arbeid.dev.nav.no
   - person.dev.nav.no

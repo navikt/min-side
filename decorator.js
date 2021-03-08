@@ -6,7 +6,7 @@ const { JSDOM } = jsdom;
 const SECONDS_PER_MINUTE = 60;
 const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
 const DECORATOR_URL = process.env.DECORATOR_URL || 'http://localhost:8100/dekoratoren';
-const DITTNAV_URL = process.env.DITTNAV_URL || 'https://localhost:7000/person/layout-dittnav';
+const DITTNAV_URL = process.env.DITTNAV_URL || 'https://localhost:7000/person/min-side';
 
 // Refresh cache every hour
 const cache = new NodeCache({
@@ -24,7 +24,7 @@ const getDecorator = async () => {
       level: "Level4",
       redirectToApp: true,
       breadcrumbs: JSON.stringify([
-        { url: `${DITTNAV_URL}`, title: "Ditt NAV" },
+        { url: `${DITTNAV_URL}`, title: "Min side" },
       ]),
     };
     console.log(`Loading decorator from ${DECORATOR_URL} with params ${JSON.stringify(params)}`);

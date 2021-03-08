@@ -8,7 +8,7 @@ const fetchMiddleware = require("./middleware");
 const { basePath, port, isDevelopmentEnv, urls } = require("./config");
 
 const layout = new Layout({
-  name: "layout-dittnav",
+  name: "min-side",
   pathname: basePath,
   development: isDevelopmentEnv,
   logger: console,

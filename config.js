@@ -1,4 +1,4 @@
-const basePath = process.env.BASE_PATH || "/person/layout-dittnav";
+const basePath = process.env.BASE_PATH || "/person/min-side";
 const port = process.env.PORT || 7000;
 const isDevelopmentEnv = true;
 
