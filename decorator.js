@@ -24,7 +24,7 @@ const getDecorator = async () => {
       level: "Level4",
       redirectToApp: true,
       breadcrumbs: JSON.stringify([
-        { url: `${DITTNAV_URL}`, title: "Min side" },
+        { url: `${DITTNAV_URL}`, title: "Ditt NAV" },
       ]),
     };
     console.log(`Loading decorator from ${DECORATOR_URL} with params ${JSON.stringify(params)}`);
