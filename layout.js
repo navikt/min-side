@@ -103,8 +103,26 @@ app.get(`${layout.pathname()}/isAlive|isReady`, (req, res) => {
   res.sendStatus(200);
 });
 
+function getAllAssetPaths(podlets) {
+  if (!podlets) return [];
+
+  const assets = Object.values(podlets).flatMap((podlet) => (podlet.css || []).concat((podlet.js || [])));
+  const paths = assets.map((asset) => asset.value);
+  return paths;
+}
+
 app.get(`${layout.pathname()}`, fetchMiddleware(podlets), (req, res) => {
-  res.status(200).render("index", res.locals);
+  res.status(200);
+  const assets = getAllAssetPaths(res.locals.podlets);
+  if (res.push) {
+    console.log('Pushing assets to client', assets);
+    assets.forEach((asset) => {
+      res.push(asset, {});
+    })
+  } else {
+    console.log('Server-push not supported');
+  }
+  res.render("index", res.locals);
 });
 
 app.get("/metrics", async function (req, res) {
