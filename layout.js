@@ -68,10 +68,15 @@ const podlets = [
 // Context parsers
 layout.context.register("authlevel", {
   parse: async function (inc) {
+    const cookie = inc.request.headers["cookie"];
+    if (!cookie) {
+      return "N/A";
+    }
+
     try {
       const resp = await axios.get("https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth", {
         headers: {
-          cookie: inc.request.headers["cookie"],
+          cookie,
         },
       });
       return resp.data.securityLevel;
