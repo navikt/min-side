@@ -13,7 +13,7 @@ const fetchMiddleware = (podlets) => {
           .reduce((acc, elem, index) => ((acc[podlets[index].name] = elem), acc), {});
 
         res.locals = {
-          title: "Min Side",
+          title: "Dittnav - Layout",
           decorator: decoratorResult,
           podlets: podletResults,
         };

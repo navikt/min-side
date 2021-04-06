@@ -40,6 +40,12 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
+    name: "podlet-vta-jobb",
+    uri: urls.vtaJobbUrl,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
     name: "podlet-dittnav-lenkeliste",
     uri: urls.dittnavLenkelisteUrl,
     resolveJs: true,
