@@ -46,6 +46,12 @@ const podlets = [
     resolveCss: true,
   }),
   layout.client.register({
+    name: "podlet-vta-okonomi",
+    uri: urls.vtaOkonomi,
+    resolveJs: true,
+    resolveCss: true,
+  }),
+  layout.client.register({
     name: "podlet-dittnav-lenkeliste",
     uri: urls.dittnavLenkelisteUrl,
     resolveJs: true,
