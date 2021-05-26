@@ -1,0 +1,49 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: min-side
+  namespace: personbruker
+  labels:
+    team: personbruker
+    app: min-side
+spec:
+  image: {{image}}
+  port: 7000
+  liveness:
+    path: /person/min-side/isAlive
+    timeout: 1
+    periodSeconds: 5
+    failureThreshold: 10
+  readiness:
+    path: /person/min-side/isReady
+    timeout: 1
+  prometheus:
+    enabled: true
+    path: /metrics
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 75
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+    requests:
+      cpu: 300m
+      memory: 512Mi
+  ingresses:
+    - "https://person.intern.nav.no/person/min-side"
+  sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
+  envFrom:
+    - secret: layout-dittnav-secret
+  env:
+    - name: BASE_PATH
+      value: /person/min-side
+  accessPolicy:
+    outbound:
+      external:
+        - host: "arbeid.dev.nav.no"
+        - host: "person.dev.nav.no"
+        - host: "dekoratoren.dev.nav.no"
+        - host: "innloggingsstatus.dev.nav.no"
+        - host: "pto-proxy.dev.intern.nav.no"
