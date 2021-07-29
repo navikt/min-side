@@ -108,14 +108,6 @@ app.get(`${layout.pathname()}/isAlive|isReady`, (req, res) => {
   res.sendStatus(200);
 });
 
-function getAllAssetPaths(podlets) {
-  if (!podlets) return [];
-
-  const assets = Object.values(podlets).flatMap((podlet) => (podlet.css || []).concat((podlet.js || [])));
-  const paths = assets.map((asset) => asset.value);
-  return paths;
-}
-
 app.get(`${layout.pathname()}`, fetchMiddleware(podlets), (req, res) => {
   res.status(200).render("index", res.locals);
 });
