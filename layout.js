@@ -47,7 +47,6 @@ const podlets = [
   }),
 ];
 
-// Context parsers
 layout.context.register("authlevel", {
   parse: async function (inc) {
     const cookie = inc.request.headers["cookie"];
@@ -69,13 +68,11 @@ layout.context.register("authlevel", {
   },
 });
 
-// Set up prometheus client with podium metrics
 const metricsConsumer = new PrometheusConsumer({ client: promClient });
 promClient.collectDefaultMetrics({ register: metricsConsumer.registry });
 metricsConsumer.on("error", (err) => console.error(err));
 layout.metrics.pipe(metricsConsumer);
 
-// Express setup
 const app = express();
 app.use(layout.middleware());
 
@@ -100,7 +97,7 @@ app.get("/metrics", async function (req, res) {
 });
 
 app.use((error, req, res, next) => {
-  res.status(500).send("<html lang='no'><body><h1>Beklager, det oppstod en uventet feil, prøv igjen senere</h1></body></html>");
+  res.status(500).send("<html lang='no'><body><h1>Beklager, det oppstod en uventet feil. Prøv igjen senere.</h1></body></html>");
 });
 
 layout.client.refreshManifests().then(() => {
