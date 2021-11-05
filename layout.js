@@ -100,7 +100,7 @@ app.get("/metrics", async function (req, res) {
 });
 
 app.use((error, req, res, next) => {
-  res.status(500).send("<html><body><h1>Internal server error</h1></body></html>");
+  res.status(500).send("<html lang='no'><body><h1>Beklager, det oppstod en uventet feil, prøv igjen senere</h1></body></html>");
 });
 
 layout.client.refreshManifests().then(() => {
